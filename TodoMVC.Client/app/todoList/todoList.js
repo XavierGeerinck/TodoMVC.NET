@@ -6,8 +6,8 @@ var todoList = angular.module('todoList', ['ngRoute', 'ngResource']);
 todoList.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
-            controller: 'ListCtrl',
-            templateUrl: 'todoList/todoList-list.tpl.html'
+            controller: 'TodoList_ListCtrl',
+            templateUrl: 'app/todoList/todoList-list.html'
         })
         .otherwise({
             redirectTo: '/'
@@ -24,6 +24,6 @@ todoList.factory('TodoList', ['$resource',
 ]);
 
 // Controller
-todoList.controller('ListCtrl', ['$scope', function ($scope) {
+todoList.controller('TodoList_ListCtrl', ['$scope', 'TodoList', function ($scope, TodoList) {
     $scope.todoLists = TodoList.query();
 }]);
