@@ -3,14 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoMVC.Server", "TodoMvcSplittedClientAndServer\TodoMVC.Server.csproj", "{F91BF1BE-BCD0-4CF3-B989-99CDFFFBBD1F}"
-	ProjectSection(ProjectDependencies) = postProject
-		{33617911-8E26-41BE-A522-992AF6BA26E4} = {33617911-8E26-41BE-A522-992AF6BA26E4}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoMVC.Core", "TodoMVC.Core\TodoMVC.Core.csproj", "{33617911-8E26-41BE-A522-992AF6BA26E4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoMVC.Client", "TodoMVC.Client\TodoMVC.Client.csproj", "{81ED291C-3CDE-49F8-B3E3-6C059E3457C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoMVC.Server", "TodoMVC.Server\TodoMVC.Server.csproj", "{7955171E-19CE-4269-BB68-D1C4FB81B5AB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{33617911-8E26-41BE-A522-992AF6BA26E4} = {33617911-8E26-41BE-A522-992AF6BA26E4}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,10 +18,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F91BF1BE-BCD0-4CF3-B989-99CDFFFBBD1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F91BF1BE-BCD0-4CF3-B989-99CDFFFBBD1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F91BF1BE-BCD0-4CF3-B989-99CDFFFBBD1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F91BF1BE-BCD0-4CF3-B989-99CDFFFBBD1F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{33617911-8E26-41BE-A522-992AF6BA26E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{33617911-8E26-41BE-A522-992AF6BA26E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33617911-8E26-41BE-A522-992AF6BA26E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -30,6 +26,10 @@ Global
 		{81ED291C-3CDE-49F8-B3E3-6C059E3457C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81ED291C-3CDE-49F8-B3E3-6C059E3457C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81ED291C-3CDE-49F8-B3E3-6C059E3457C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7955171E-19CE-4269-BB68-D1C4FB81B5AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7955171E-19CE-4269-BB68-D1C4FB81B5AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7955171E-19CE-4269-BB68-D1C4FB81B5AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7955171E-19CE-4269-BB68-D1C4FB81B5AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

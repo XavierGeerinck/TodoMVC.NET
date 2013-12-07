@@ -11,9 +11,16 @@ namespace TodoMVC.Core
     [Table("TodoList")]
     public class TodoList
     {
+        public TodoList()
+        {
+            TodoItems = new HashSet<TodoItem>();
+        }
+
         [Key]
         public int Id { get; set; }
         public String Name { get; set; }
-        public virtual ICollection<TodoItem> TodoItems;
+
+        // Add reference to the todoitems
+        public virtual ICollection<TodoItem> TodoItems { get; set; }
     }
 }

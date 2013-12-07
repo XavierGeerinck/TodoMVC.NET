@@ -17,5 +17,10 @@ namespace TodoMVC.Core
         public String Description { get; set; }
         public State State { get; set; }
         public DateTime DueDate { get; set; }
+
+        // Add reference to which TodoList this item belongs
+        public virtual int? TodoListId { get; set; }
+        [ForeignKey("TodoListId")]
+        public virtual TodoList TodoList { get; set; }
     }
 }
