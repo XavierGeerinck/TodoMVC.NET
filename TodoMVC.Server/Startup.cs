@@ -1,4 +1,5 @@
-﻿using Owin;
+﻿using Microsoft.Owin;
+using Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,15 +7,20 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using TodoMVC.Server.Middleware;
 
+[assembly: OwinStartup(typeof(TodoMVC.Server.Startup))]
 namespace TodoMVC.Server
 {
     public class Startup
     {
         // Configure the Web API, The Startup Class is specified as a type
         // parameter in the WebApp.Start method.
-        public void Configuration(IAppBuilder appBuilder)
+        public void Configuration(IAppBuilder app)
         {
+            // Error code middleware, used to catch exceptions and show a debug screen, disable this in prod
+            app.UseErrorPage();
+
             // Configure Web API for self-host
             HttpConfiguration config = new HttpConfiguration();
             config.Routes.MapHttpRoute(
@@ -24,12 +30,10 @@ namespace TodoMVC.Server
             );
 
             // Set the Access-Control-Allow-Origin
-            //appBuilder.Use();
-            //appBuilder.MapHubs(new HubConfiguration { EnableCrossDomain = true });
-            //listener.Headers.Set("Access-Control-Allow-Origin", "http://http://127.0.0.1:56759/");
+            app.Use<HeaderMiddleware>();
 
             // Activate above config
-            appBuilder.UseWebApi(config);
+            app.UseWebApi(config);
         }
     }
 }
