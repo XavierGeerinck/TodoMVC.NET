@@ -2,6 +2,9 @@
 
 <div class="page-header">
     <h1>TodoList</h1>
+    <a href="#/list/create" type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-plus-sign"></span> Add List
+    </a>
 </div>
 
 <div class="panel panel-default" ng-repeat="todoList in todoLists">
@@ -10,5 +13,9 @@
         <ul class="list-group" ng-repeat="todoItem in todoList.TodoItems">
             <li class="list-group-item">{{ todoItem.Title }}</li>
         </ul>
+
+        <button type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-plus-sign"></span> Add Item
+        </button>
     </div>
 </div>

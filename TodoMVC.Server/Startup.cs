@@ -1,4 +1,5 @@
 ﻿using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Owin;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,9 @@ namespace TodoMVC.Server
         {
             // Error code middleware, used to catch exceptions and show a debug screen, disable this in prod
             app.UseErrorPage();
+
+            // Add cors, to enable post, put, ...
+            app.UseCors(CorsOptions.AllowAll);
 
             // Configure Web API for self-host
             HttpConfiguration config = new HttpConfiguration();

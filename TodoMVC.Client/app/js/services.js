@@ -6,7 +6,8 @@ var services = angular.module('app.services', ['ngResource']);
 services.factory('TodoList', ['$resource',
     function ($resource) {
         return $resource('http://localhost:9000/api/todolist', {}, {
-            query: { method: 'GET', params: {}, isArray: true }
+            query: { method: 'GET', params: {}, isArray: true },
+            post:  { method: 'POST' }
         });
     }
 ]);

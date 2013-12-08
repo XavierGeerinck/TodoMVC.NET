@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data;
+using TodoMVC.Core.GetTodoList;
 
-namespace TodoMVC.Core.GetTodoList
+namespace TodoMVC.Core.GetTodoLists
 {
-    public class GetTodoListHandler
+    public class GetTodoListsHandler
     {
         public IEnumerable<TodoListResult> Handle()
         {
@@ -19,10 +20,12 @@ namespace TodoMVC.Core.GetTodoList
             var todoItems = context.TodoLists.Include(tt => tt.TodoItems);
 
             // Create the mapper to convert to JSON
-            var mapper = new TodoListMapper();
+            var mapper = new TodoListsMapper();
             mapper.Configure();
 
-            return todoItems.Select(mapper.Map);
+            var result = todoItems.Select(mapper.Map);
+
+            return result;
         }
     }
 }

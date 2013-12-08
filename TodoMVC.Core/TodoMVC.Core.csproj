@@ -53,11 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateTodoList\CreateTodoListHandler.cs" />
     <Compile Include="GetTodoItems\GetTodoItemsHandler.cs" />
     <Compile Include="GetTodoItems\TodoItemMapper.cs" />
-    <Compile Include="GetTodoList\TodoListMapper.cs" />
+    <Compile Include="GetTodoLists\TodoListsMapper.cs" />
     <Compile Include="JSON\TodoItemResult.cs" />
-    <Compile Include="GetTodoList\GetTodoListHandler.cs" />
+    <Compile Include="GetTodoLists\GetTodoListsHandler.cs" />
     <Compile Include="JSON\TodoListResult.cs" />
     <Compile Include="TodoContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
