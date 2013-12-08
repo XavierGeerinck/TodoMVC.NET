@@ -7,12 +7,8 @@
 <div class="panel panel-default" ng-repeat="todoList in todoLists">
     <div class="panel-heading">{{ todoList.Name }}</div>
     <div class="panel-body">
-        <ul class="list-group">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+        <ul class="list-group" ng-repeat="todoItem in todoList.TodoItems">
+            <li class="list-group-item">{{ todoItem.Title }}</li>
         </ul>
     </div>
 </div>
