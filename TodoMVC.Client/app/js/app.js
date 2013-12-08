@@ -13,6 +13,6 @@ var app = angular.module('app', [
 // Configure routes
 app.config(function ($routeProvider) {
     $routeProvider.when('/', { controller: 'TodoList_ListCtrl', templateUrl: 'partials/todoList-list.html' });
-    $routeProvider.when('/create', { controller: 'TodoList_CreateCtrl', templateUrl: 'partials/todoList-create.html' });
+    $routeProvider.when('/list/create', { controller: 'TodoList_CreateCtrl', templateUrl: 'partials/todoList-create.html' });
     $routeProvider.otherwise({ redirectTo: '/' });
 });
