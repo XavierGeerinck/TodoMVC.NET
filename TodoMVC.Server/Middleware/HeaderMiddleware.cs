@@ -16,7 +16,7 @@ namespace TodoMVC.Server.Middleware
 
         public override async Task Invoke(IOwinContext context)
         {
-            context.Response.Headers.Set("Access-Control-Allow-Origin", ConfigurationManager.AppSettings[""]);
+            context.Response.Headers.Set("Access-Control-Allow-Origin", ConfigurationManager.AppSettings["ClientOrigin"]);
             await this.Next.Invoke(context);
         }
     }

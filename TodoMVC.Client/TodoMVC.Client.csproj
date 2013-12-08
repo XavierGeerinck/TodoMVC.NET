@@ -17,13 +17,26 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app\app.js" />
-    <Content Include="app\todoList\todoList-list.html" />
-    <Content Include="app\todoList\todoList.js" />
-    <Content Include="index.html" />
+    <Content Include="app\assets\css\bootstrap-theme.css" />
+    <Content Include="app\assets\css\bootstrap-theme.min.css" />
+    <Content Include="app\assets\css\bootstrap.css" />
+    <Content Include="app\assets\css\bootstrap.min.css" />
+    <Content Include="app\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\assets\js\bootstrap.js" />
+    <Content Include="app\assets\js\bootstrap.min.js" />
+    <Content Include="app\js\app.js" />
+    <Content Include="app\js\controllers.js" />
+    <Content Include="app\js\directives.js" />
+    <Content Include="app\js\filters.js" />
+    <Content Include="app\js\services.js" />
+    <Content Include="app\partials\todoList-list.html" />
+    <Content Include="app\index.html" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="app\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="app\assets\fonts\glyphicons-halflings-regular.woff" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -32,9 +45,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="assets\" />
-    <Folder Include="common\" />
-    <Folder Include="less\" />
+    <Folder Include="app\lib\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

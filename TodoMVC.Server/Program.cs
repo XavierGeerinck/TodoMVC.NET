@@ -12,12 +12,14 @@ namespace TodoMVC.Server
     {
         static void Main(string[] args)
         {
-            string baseAddress = "http://localhost:9000/";
+            // localhost:9000 = bind to loopback
+            // *:9000 = bind to all addresses
+            string url = "http://localhost:9000/";
 
             // Start OWIN host 
-            using (WebApp.Start<Startup>(url: baseAddress))
+            using (WebApp.Start<Startup>(url))
             {
-                Console.WriteLine("Running Http server on address: " + baseAddress);
+                Console.WriteLine("Server started on {0}", url);
                 Console.ReadKey();
             }
         }
