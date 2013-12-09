@@ -17,6 +17,12 @@ namespace TodoMVC.Server.Controllers
 {
     public class TodoItemController : ApiController
     {
+        public string Options()
+        {
+            return null;
+        }
+
+        [HttpGet]
         public HttpResponseMessage Get()
         {
             var getTodoItemsHandler = new GetTodoItemsHandler();
@@ -26,6 +32,7 @@ namespace TodoMVC.Server.Controllers
             return response;
         }
 
+        [HttpPost]
         public HttpResponseMessage Post(CreateTodoItemModel model)
         {
             if (ModelState.IsValid)
