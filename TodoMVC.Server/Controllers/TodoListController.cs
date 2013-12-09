@@ -72,5 +72,28 @@ namespace TodoMVC.Server.Controllers
             var response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
         }
+
+        [HttpPut]
+        public HttpResponseMessage Put(int id, EditTodoListModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Bind the model to a TodoList object
+                var mapper = new EditTodoListMapper();
+                mapper.Configure();
+
+                // Map the model to the todolist result
+                var todoList = mapper.Map(model);
+
+                // Create the todoList
+                var editTodoListHandler = new EditTodoListHandler();
+                editTodoListHandler.Handle(id, todoList);
+
+                var response = Request.CreateResponse<TodoList>(HttpStatusCode.OK, todoList);
+                return response;
+            }
+
+            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ModelState);
+        }
     }
 }

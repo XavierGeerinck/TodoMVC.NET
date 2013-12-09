@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TodoListHandlers\EditTodoListHandler.cs" />
     <Compile Include="TodoListHandlers\CreateTodoListHandler.cs" />
     <Compile Include="TodoListHandlers\DeleteTodoListHandler.cs" />
     <Compile Include="TodoListHandlers\GetTodoItemsHandler.cs" />

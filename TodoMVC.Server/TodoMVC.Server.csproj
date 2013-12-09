@@ -94,6 +94,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\EditTodoListMapper.cs" />
+    <Compile Include="Models\EditTodoListModel.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="Controllers\TodoListController.cs" />
     <Compile Include="Mappers\CreateTodoListMapper.cs" />

@@ -5,7 +5,7 @@ var controllers = angular.module('app.controllers', []);
 // Controllers
 controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoListFactory) {
     // List
-    $scope.todoLists = TodoListFactory.query();
+    $scope.todoLists = TodoListFactory.getAll();
 
     // Delete
     $scope.removeFromTodoList = function (todoListId) {
@@ -35,7 +35,7 @@ controllers.controller('TodoList_CreateCtrl', function ($scope, $location, TodoL
 });
 
 controllers.controller('TodoList_EditCtrl', function ($scope, $location, $routeParams, TodoListFactory) {
-    $scope.todoList = TodoListFactory.query({ id: $routeParams.id });
+    $scope.todoList = TodoListFactory.getOne({ id: $routeParams.id });
 
     $scope.editTodoList = function () {
         // Add + redirect to home
