@@ -13,12 +13,11 @@ controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoLis
             return;
         }
 
-        // Remove + redirect to home
+        // Remove
         TodoList.remove({ id: todoListId }, {}, function (data) {
-            for (i in $scope.todoLists) {
-                if ($scope.contacts[i].id == id) {
-                    $scope.contacts.splice(i, 1);
-                    $scope.newcontact = {};
+            for (var i in $scope.todoLists) {
+                if ($scope.todoLists[i].Id == todoListId) {
+                    $scope.todoLists.splice(i, 1);
                 }
             }
             $scope.todoLists = TodoList.query();
