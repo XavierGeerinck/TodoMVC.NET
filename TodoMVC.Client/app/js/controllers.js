@@ -3,12 +3,6 @@
 var controllers = angular.module('app.controllers', []);
 
 // Controllers
-controllers.controller('HeaderCtrl', function ($scope, $location) {
-    $scope.isActive = function (viewLocation) {
-        return viewLocation == $location.path();
-    };
-});
-
 controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoListFactory) {
     // List
     $scope.todoLists = TodoListFactory.getAll();
@@ -32,12 +26,29 @@ controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoLis
 });
 
 controllers.controller('TodoList_CreateCtrl', function ($scope, $location, TodoListFactory) {
+    $scope.submitted = false;
     $scope.addTodoList = function () {
-        // Add + redirect to home
-        TodoListFactory.add({}, $scope.todoList, function (data) {
-            $location.path('/');
-        });
+        
+        if($scope.form.$valid) {
+             // Add + redirect to home
+            TodoListFactory.add({}, $scope.todoList, function (data) {
+                $location.path('/');
+            })
+            //catch error from server
+            .$promise.catch(
+                function( error ){
+                    $scope.serverError = error["data"]["ModelState"]["model.Name"].toString();
+            });  
+        } else {
+            $scope.submitted = true;
+        }
+       
     };
+    
+    $scope.minLength = 3;
+    $scope.maxLength = 50;
+    $scope.lengthError = "The length should be between 3 and 50 characters!";
+    $scope.text = "My cool list";
 });
 
 controllers.controller('TodoList_EditCtrl', function ($scope, $location, $routeParams, TodoListFactory) {
@@ -45,8 +56,11 @@ controllers.controller('TodoList_EditCtrl', function ($scope, $location, $routeP
 
     $scope.editTodoList = function () {
         // Add + redirect to home
-        TodoListFactory.edit({ id: $scope.todoList.Id }, $scope.todoList, function (data) {
+        TodoListFactory.edit({ id: $scope.todoList.Id }, $scope.todoList, function (data)
+        {
             $location.path('/');
         });
-    };
+        TodoList.post($scope.todoList)
+        
+    };    
 });

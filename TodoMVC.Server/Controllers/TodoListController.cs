@@ -7,9 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using TodoMVC.Core;
-using TodoMVC.Core.CreateTodoList;
-using TodoMVC.Core.GetTodoList;
-using TodoMVC.Core.GetTodoLists;
+using TodoMVC.Core.JSON;
+using TodoMVC.Core.TodoListHandlers;
 using TodoMVC.Server.Mappers;
 using TodoMVC.Server.Models;
 
@@ -32,6 +31,16 @@ namespace TodoMVC.Server.Controllers
             return response;
         }
 
+        [HttpGet]
+        public HttpResponseMessage Get(int id)
+        {
+            var getTodoListHandler = new GetTodoListHandler();
+            var result = getTodoListHandler.Handle(id);
+
+            var response = Request.CreateResponse<TodoListResult>(HttpStatusCode.OK, result);
+            return response;
+        }
+
         [HttpPost]
         public HttpResponseMessage Post(CreateTodoListModel model)
         {
@@ -48,6 +57,39 @@ namespace TodoMVC.Server.Controllers
                 createTodoListHandler.Handle(todoList);
 
                 var response = Request.CreateResponse<TodoList>(HttpStatusCode.Created, todoList);
+                return response;
+            }
+
+            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ModelState);
+        }
+
+        [HttpDelete]
+        public HttpResponseMessage Delete(int id)
+        {
+            var deleteTodoListHandler = new DeleteTodoListHandler();
+            deleteTodoListHandler.Handle(id);
+
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            return response;
+        }
+
+        [HttpPut]
+        public HttpResponseMessage Put(int id, EditTodoListModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Bind the model to a TodoList object
+                var mapper = new EditTodoListMapper();
+                mapper.Configure();
+
+                // Map the model to the todolist result
+                var todoList = mapper.Map(model);
+
+                // Create the todoList
+                var editTodoListHandler = new EditTodoListHandler();
+                editTodoListHandler.Handle(id, todoList);
+
+                var response = Request.CreateResponse<TodoList>(HttpStatusCode.OK, todoList);
                 return response;
             }
 

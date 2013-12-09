@@ -4,13 +4,24 @@
     <h1>Create TodoList</h1>
 </div>
 
-<form class="form-horizontal" role="form" ng-submit="addTodoList(todoList)">
+<form class="css-form" role="form" ng-submit="addTodoList(todoList)" name="form">
     <div class="form-group">
         <label for="inputName" class="col-sm-2 control-label">List Name</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputName" placeholder={{text}} ng-model="todoList.Name" required>
-        </div>
+            <input type="text" class="form-control" id="inputName" placeholder={{text}} ng-model="todoList.Name" required ng-minlength={{minLength}} ng-maxlength={{maxLength}} name="input"> 
+<!--
+errors
+check if value entered is between min and max and only show after submit
+-->   
+            <span ng-show="(form.input.$error.minlength || form.input.$error.maxlength) && submitted" class="error">   
+                {{lengthError}}
+                <br />
+                {{serverError}}
+            </span>
+            
+        </div> 
     </div>
+   
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <a class="btn btn-default" href="#/">Cancel</a>

@@ -58,3 +58,9 @@
   from { opacity:1; }
   to { opacity:0; }
 }
+
+/* error css */
+.error {
+    color:#D8000C;
+    background-color:#FFBABA;
+}
