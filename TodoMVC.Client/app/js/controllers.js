@@ -3,6 +3,12 @@
 var controllers = angular.module('app.controllers', []);
 
 // Controllers
+controllers.controller('HeaderCtrl', function ($scope, $location) {
+    $scope.isActive = function (viewLocation) {
+        return viewLocation == $location.path();
+    };
+});
+
 controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoListFactory) {
     // List
     $scope.todoLists = TodoListFactory.getAll();
