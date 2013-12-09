@@ -1,0 +1,20 @@
+﻿<br />
+
+<div class="page-header">
+    <h1>Edit TodoList</h1>
+</div>
+
+<form class="form-horizontal" role="form" ng-submit="editTodoList()">
+    <div class="form-group">
+        <label for="inputName" class="col-sm-2 control-label">List Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputName" ng-model="todoList.Name" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <a class="btn btn-default" href="#/">Cancel</a>
+            <button class="btn btn-default" type="submit">Edit</button>
+        </div>
+    </div>
+</form>

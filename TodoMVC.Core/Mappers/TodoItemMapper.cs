@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
+using TodoMVC.Core.JSON;
 
-namespace TodoMVC.Core.GetTodoItems
+namespace TodoMVC.Core.Mappers
 {
     public class TodoItemMapper
     {

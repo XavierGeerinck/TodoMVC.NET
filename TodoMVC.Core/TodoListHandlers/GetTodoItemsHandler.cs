@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TodoMVC.Core.JSON;
+using TodoMVC.Core.Mappers;
 
-namespace TodoMVC.Core.GetTodoItems
+namespace TodoMVC.Core.TodoListHandlers
 {
     public class GetTodoItemsHandler
     {

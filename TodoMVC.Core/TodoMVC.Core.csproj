@@ -53,12 +53,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateTodoList\CreateTodoListHandler.cs" />
-    <Compile Include="GetTodoItems\GetTodoItemsHandler.cs" />
-    <Compile Include="GetTodoItems\TodoItemMapper.cs" />
-    <Compile Include="GetTodoLists\TodoListsMapper.cs" />
+    <Compile Include="TodoListHandlers\EditTodoListHandler.cs" />
+    <Compile Include="TodoListHandlers\CreateTodoListHandler.cs" />
+    <Compile Include="TodoListHandlers\DeleteTodoListHandler.cs" />
+    <Compile Include="TodoListHandlers\GetTodoItemsHandler.cs" />
+    <Compile Include="Mappers\TodoItemMapper.cs" />
+    <Compile Include="Mappers\TodoListMapper.cs" />
+    <Compile Include="TodoListHandlers\GetTodoListHandler.cs" />
     <Compile Include="JSON\TodoItemResult.cs" />
-    <Compile Include="GetTodoLists\GetTodoListsHandler.cs" />
+    <Compile Include="TodoListHandlers\GetTodoListsHandler.cs" />
     <Compile Include="JSON\TodoListResult.cs" />
     <Compile Include="TodoContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
