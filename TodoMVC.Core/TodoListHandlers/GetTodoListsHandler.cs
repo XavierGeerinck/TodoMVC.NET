@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data;
-using TodoMVC.Core.GetTodoList;
+using TodoMVC.Core.JSON;
+using TodoMVC.Core.Mappers;
 
-namespace TodoMVC.Core.GetTodoLists
+namespace TodoMVC.Core.TodoListHandlers
 {
     public class GetTodoListsHandler
     {
@@ -17,13 +18,13 @@ namespace TodoMVC.Core.GetTodoLists
             var context = new TodoContext();
 
             // Get the todoitems
-            var todoItems = context.TodoLists.Include(tt => tt.TodoItems);
+            var todoLists = context.TodoLists.Include(tt => tt.TodoItems);
 
             // Create the mapper to convert to JSON
-            var mapper = new TodoListsMapper();
+            var mapper = new TodoListMapper();
             mapper.Configure();
 
-            var result = todoItems.Select(mapper.Map);
+            var result = todoLists.Select(mapper.Map);
 
             return result;
         }

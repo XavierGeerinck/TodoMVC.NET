@@ -7,10 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using TodoMVC.Core;
-using TodoMVC.Core.CreateTodoList;
-using TodoMVC.Core.DeleteTodoList;
-using TodoMVC.Core.GetTodoList;
-using TodoMVC.Core.GetTodoLists;
+using TodoMVC.Core.JSON;
+using TodoMVC.Core.TodoListHandlers;
 using TodoMVC.Server.Mappers;
 using TodoMVC.Server.Models;
 
@@ -30,6 +28,16 @@ namespace TodoMVC.Server.Controllers
             var result = getTodoListsHandler.Handle();
 
             var response = Request.CreateResponse<IEnumerable<TodoListResult>>(HttpStatusCode.OK, result);
+            return response;
+        }
+
+        [HttpGet]
+        public HttpResponseMessage Get(int id)
+        {
+            var getTodoListHandler = new GetTodoListHandler();
+            var result = getTodoListHandler.Handle(id);
+
+            var response = Request.CreateResponse<TodoListResult>(HttpStatusCode.OK, result);
             return response;
         }
 

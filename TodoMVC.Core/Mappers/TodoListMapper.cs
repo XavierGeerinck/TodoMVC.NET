@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TodoMVC.Core.GetTodoItems;
+using TodoMVC.Core.JSON;
 
-namespace TodoMVC.Core.GetTodoList
+namespace TodoMVC.Core.Mappers
 {
-    public class TodoListsMapper
+    public class TodoListMapper
     {
         public virtual void Configure() 
         {

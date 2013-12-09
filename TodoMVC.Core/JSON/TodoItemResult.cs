@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TodoMVC.Core.GetTodoItems
+namespace TodoMVC.Core.JSON
 {
     public class TodoItemResult
     {

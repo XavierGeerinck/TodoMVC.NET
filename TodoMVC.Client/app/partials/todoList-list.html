@@ -11,6 +11,7 @@
     <div class="panel-heading">
         {{ todoList.Name }}
         <button class="btn btn-default" ng-click="removeFromTodoList(todoList.Id)">Delete</button>
+        <a href="#/list/edit/{{ todoList.Id }}" class="btn btn-default">Edit</a>
     </div>
     <div class="panel-body">
         <ul class="list-group" ng-repeat="todoItem in todoList.TodoItems">

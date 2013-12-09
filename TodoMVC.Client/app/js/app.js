@@ -15,5 +15,6 @@ var app = angular.module('app', [
 app.config(function ($routeProvider) {
     $routeProvider.when('/', { controller: 'TodoList_ListCtrl', templateUrl: 'partials/todoList-list.html' });
     $routeProvider.when('/list/create', { controller: 'TodoList_CreateCtrl', templateUrl: 'partials/todoList-create.html' });
+    $routeProvider.when('/list/edit/:id', { controller: 'TodoList_EditCtrl', templateUrl: 'partials/todoList-edit.html' });
     $routeProvider.otherwise({ redirectTo: '/' });
 });

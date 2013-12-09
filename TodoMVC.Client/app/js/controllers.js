@@ -3,9 +3,9 @@
 var controllers = angular.module('app.controllers', []);
 
 // Controllers
-controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoList) {
+controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoListFactory) {
     // List
-    $scope.todoLists = TodoList.query();
+    $scope.todoLists = TodoListFactory.query();
 
     // Delete
     $scope.removeFromTodoList = function (todoListId) {
@@ -14,21 +14,32 @@ controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoLis
         }
 
         // Remove
-        TodoList.remove({ id: todoListId }, {}, function (data) {
+        TodoListFactory.remove({ id: todoListId }, {}, function (data) {
+            // Remove from view
             for (var i in $scope.todoLists) {
                 if ($scope.todoLists[i].Id == todoListId) {
                     $scope.todoLists.splice(i, 1);
                 }
             }
-            $scope.todoLists = TodoList.query();
         });
     };
 });
 
-controllers.controller('TodoList_CreateCtrl', function ($scope, $location, TodoList) {
+controllers.controller('TodoList_CreateCtrl', function ($scope, $location, TodoListFactory) {
     $scope.addTodoList = function () {
         // Add + redirect to home
-        TodoList.add({}, $scope.todoList, function (data) {
+        TodoListFactory.add({}, $scope.todoList, function (data) {
+            $location.path('/');
+        });
+    };
+});
+
+controllers.controller('TodoList_EditCtrl', function ($scope, $location, $routeParams, TodoListFactory) {
+    $scope.todoList = TodoListFactory.query({ id: $routeParams.id });
+
+    $scope.editTodoList = function () {
+        // Add + redirect to home
+        TodoListFactory.edit({ id: $scope.todoList.Id }, $scope.todoList, function (data) {
             $location.path('/');
         });
     };

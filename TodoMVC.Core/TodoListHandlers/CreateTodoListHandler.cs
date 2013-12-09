@@ -4,17 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TodoMVC.Core.DeleteTodoList
+namespace TodoMVC.Core.TodoListHandlers
 {
-    public class DeleteTodoListHandler
+    public class CreateTodoListHandler
     {
-        public void Handle(int todoListId)
+        public void Handle(TodoList todoList)
         {
             var context = new TodoContext();
             var todoListsRepo = context.TodoLists;
-            var todoList = todoListsRepo.Single(tl => tl.Id == todoListId);
-            
-            todoListsRepo.Remove(todoList);
+
+            todoListsRepo.Add(todoList);
             context.SaveChanges();
         }
     }
