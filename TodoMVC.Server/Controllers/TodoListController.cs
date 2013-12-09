@@ -23,12 +23,13 @@ namespace TodoMVC.Server.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<TodoListResult> Get()
+        public HttpResponseMessage Get()
         {
             var getTodoListsHandler = new GetTodoListsHandler();
             var result = getTodoListsHandler.Handle();
 
-            return result;
+            var response = Request.CreateResponse<IEnumerable<TodoListResult>>(HttpStatusCode.OK, result);
+            return response;
         }
 
         [HttpPost]
