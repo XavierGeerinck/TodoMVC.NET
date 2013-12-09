@@ -16,9 +16,24 @@
         <a href="#/list/edit/{{ todoList.Id }}" class="btn btn-default">Edit</a>
     </div>
     <div class="panel-body">
-        <ul class="list-group" ng-repeat="todoItem in todoList.TodoItems">
-            <li class="list-group-item">{{ todoItem.Title }}</li>
-        </ul>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered" ng-show="todoList.TodoItems">
+                <thead>
+                    <tr>
+                        <th>State</th>
+                        <th>Title</th>
+                        <th>DueDate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="todoItem in todoList.TodoItems">
+                        <td>{{ todoItem.State }}</td>
+                        <td>{{ todoItem.Title }}</td>
+                        <td>{{ todoItem.DueDate | date: 'medium'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <a href="#/item/create" type="button" class="btn btn-default">
             <span class="glyphicon glyphicon-plus-sign"></span> Add Item
