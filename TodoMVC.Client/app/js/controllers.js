@@ -54,3 +54,25 @@ controllers.controller('TodoList_EditCtrl', function ($scope, $location, $routeP
         });
     };
 });
+
+controllers.controller('TodoItem_CreateCtrl', function ($scope, $location, TodoListFactory, TodoItemFactory, StateFactory) {
+    // Get todolists
+    $scope.loadingTodoLists = true;
+    $scope.todoLists = TodoListFactory.getAll(function (data) {
+        $scope.loadingTodoLists = false;
+    });
+
+    // Get States
+    $scope.loadingStates = true;
+    $scope.states = StateFactory.getAll(function (data) {
+        $scope.loadingStates = false;
+    });
+
+
+    $scope.addTodoList = function () {
+        // Add + redirect to home
+        TodoListFactory.add({}, $scope.todoList, function (data) {
+            $location.path('/');
+        });
+    };
+});

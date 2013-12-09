@@ -35,6 +35,7 @@
     <Content Include="app\js\lib\angular-resource.js" />
     <Content Include="app\js\lib\angular-route.js" />
     <Content Include="app\js\lib\angular.js" />
+    <Content Include="app\partials\todoItem-create.html" />
     <Content Include="app\partials\todoList-create.html" />
     <Content Include="app\partials\todoList-edit.html" />
     <Content Include="app\partials\todoList-list.html" />

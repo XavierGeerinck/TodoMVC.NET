@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StateHandlers\GetStatesHandler.cs" />
     <Compile Include="TodoListHandlers\EditTodoListHandler.cs" />
     <Compile Include="TodoListHandlers\CreateTodoListHandler.cs" />
     <Compile Include="TodoListHandlers\DeleteTodoListHandler.cs" />
@@ -78,6 +79,9 @@
       <Link>AutoMapper.Net4.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TodoItemHandlers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
