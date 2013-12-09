@@ -24,7 +24,7 @@
         <div class="col-sm-10">
             <img ng-show="loadingStates" src="./images/ajax-loader.gif" class="ajax-loader repeated-item" />
 
-            <select class="form-control" id="inputName" ng-model="todoItem.State">
+            <select ng-hide="loadingStates" class="form-control repeated-item" id="inputName" ng-model="todoItem.State">
                 <option ng-repeat="(key, value) in states" value="{{ key }}">{{ value }}</option>
             </select>
         </div>
@@ -42,7 +42,7 @@
         <div class="col-sm-10">
             <img ng-show="loadingTodoLists" src="./images/ajax-loader.gif" class="ajax-loader repeated-item" />
 
-            <select class="form-control" id="inputTodoListId" ng-model="todoItem.TodoListId" >
+            <select ng-hide="loadingTodoLists" class="form-control repeated-item" id="inputTodoListId" ng-model="todoItem.TodoListId">
                 <option ng-repeat="todoList in todoLists" value="{{ todoList.Id }}">{{ todoList.Name }}</option>
             </select>
         </div>
