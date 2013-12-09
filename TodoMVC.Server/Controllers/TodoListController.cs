@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using TodoMVC.Core;
 using TodoMVC.Core.JSON;
+using TodoMVC.Core.Mappers;
 using TodoMVC.Core.TodoListHandlers;
 using TodoMVC.Server.Mappers;
 using TodoMVC.Server.Models;
@@ -56,7 +57,13 @@ namespace TodoMVC.Server.Controllers
                 var createTodoListHandler = new CreateTodoListHandler();
                 createTodoListHandler.Handle(todoList);
 
-                var response = Request.CreateResponse<TodoList>(HttpStatusCode.Created, todoList);
+                // Map the todoList to the todoList result
+                var mapperResult = new TodoListMapper();
+                mapperResult.Configure();
+                var todoListResult = mapperResult.Map(todoList);
+
+                // Return the todoListResult
+                var response = Request.CreateResponse<TodoListResult>(HttpStatusCode.Created, todoListResult);
                 return response;
             }
 

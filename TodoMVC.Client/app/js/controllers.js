@@ -85,10 +85,9 @@ controllers.controller('TodoItem_CreateCtrl', function ($scope, $location, TodoL
         $scope.loadingStates = false;
     });
 
-
-    $scope.addTodoList = function () {
+    $scope.addTodoItem = function () {
         // Add + redirect to home
-        TodoListFactory.add({}, $scope.todoList, function (data) {
+        TodoItemFactory.add({}, $scope.todoItem, function (data) {
             $location.path('/');
         });
     };

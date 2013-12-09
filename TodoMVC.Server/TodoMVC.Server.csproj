@@ -95,7 +95,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\StateController.cs" />
+    <Compile Include="Mappers\CreateTodoItemMapper.cs" />
     <Compile Include="Mappers\EditTodoListMapper.cs" />
+    <Compile Include="Models\CreateTodoItemModel.cs" />
     <Compile Include="Models\EditTodoListModel.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="Controllers\TodoListController.cs" />
