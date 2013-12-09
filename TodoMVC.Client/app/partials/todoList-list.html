@@ -7,6 +7,8 @@
     </a>
 </div>
 
+<img ng-show="viewLoading" src="./images/ajax-loader.gif" class="ajax-loader repeated-item"/>
+
 <div class="panel panel-default repeated-item" ng-repeat="todoList in todoLists">
     <div class="panel-heading">
         {{ todoList.Name }}
@@ -18,8 +20,8 @@
             <li class="list-group-item">{{ todoItem.Title }}</li>
         </ul>
 
-        <button type="button" class="btn btn-default">
+        <a href="#/item/create" type="button" class="btn btn-default">
             <span class="glyphicon glyphicon-plus-sign"></span> Add Item
-        </button>
+        </a>
     </div>
 </div>

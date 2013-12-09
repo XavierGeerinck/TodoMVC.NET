@@ -9,10 +9,10 @@ namespace TodoMVC.Core
     public enum State
     {
         [Description("ToDo")]
-        ToDo,
+        ToDo       = 0x00,
         [Description("InProgress")]
-        InProgress,
+        InProgress = 0x01,
         [Description("Completed")]
-        Completed
+        Completed  = 0x02
     }
 }

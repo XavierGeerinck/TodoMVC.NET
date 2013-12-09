@@ -3,9 +3,19 @@
 var controllers = angular.module('app.controllers', []);
 
 // Controllers
+controllers.controller('HeaderCtrl', function ($scope, $location) {
+    $scope.isActive = function (viewLocation) {
+        return viewLocation == $location.path();
+    };
+});
+
 controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoListFactory) {
+    $scope.viewLoading = true;
+
     // List
-    $scope.todoLists = TodoListFactory.getAll();
+    $scope.todoLists = TodoListFactory.getAll(function (data) {
+        $scope.viewLoading = false;
+    });
 
     // Delete
     $scope.removeFromTodoList = function (todoListId) {
@@ -30,15 +40,15 @@ controllers.controller('TodoList_CreateCtrl', function ($scope, $location, TodoL
     $scope.addTodoList = function () {
         
         if($scope.form.$valid) {
-             // Add + redirect to home
-            TodoListFactory.add({}, $scope.todoList, function (data) {
-                $location.path('/');
+        // Add + redirect to home
+        TodoListFactory.add({}, $scope.todoList, function (data) {
+            $location.path('/');
             })
             //catch error from server
             .$promise.catch(
                 function( error ){
                     $scope.serverError = error["data"]["ModelState"]["model.Name"].toString();
-            });  
+        });
         } else {
             $scope.submitted = true;
         }
@@ -56,11 +66,30 @@ controllers.controller('TodoList_EditCtrl', function ($scope, $location, $routeP
 
     $scope.editTodoList = function () {
         // Add + redirect to home
-        TodoListFactory.edit({ id: $scope.todoList.Id }, $scope.todoList, function (data)
-        {
+        TodoListFactory.edit({ id: $scope.todoList.Id }, $scope.todoList, function (data) {
             $location.path('/');
         });
-        TodoList.post($scope.todoList)
-        
-    };    
+    };
+});
+
+controllers.controller('TodoItem_CreateCtrl', function ($scope, $location, TodoListFactory, TodoItemFactory, StateFactory) {
+    // Get todolists
+    $scope.loadingTodoLists = true;
+    $scope.todoLists = TodoListFactory.getAll(function (data) {
+        $scope.loadingTodoLists = false;
+    });
+
+    // Get States
+    $scope.loadingStates = true;
+    $scope.states = StateFactory.getAll(function (data) {
+        $scope.loadingStates = false;
+    });
+
+
+    $scope.addTodoList = function () {
+        // Add + redirect to home
+        TodoListFactory.add({}, $scope.todoList, function (data) {
+            $location.path('/');
+        });
+    };
 });
