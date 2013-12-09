@@ -23,6 +23,7 @@
     <Content Include="app\css\lib\bootstrap.min.css" />
     <Content Include="app\css\main.css" />
     <Content Include="app\css\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\images\ajax-loader.gif" />
     <Content Include="app\js\lib\angular-animate.js" />
     <Content Include="app\js\lib\bootstrap.js" />
     <Content Include="app\js\lib\bootstrap.min.js" />

@@ -1,4 +1,14 @@
 ﻿/*
+    Ajax loader
+*/
+.ajax-loader {
+    left: 50%;
+    position: absolute;
+    margin-left: -10px;
+    width: 20px;
+}
+
+/*
   We're using CSS transitions for when
   the enter and move events are triggered
   for the element that has the .repeated-item

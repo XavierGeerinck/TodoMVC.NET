@@ -10,8 +10,12 @@ controllers.controller('HeaderCtrl', function ($scope, $location) {
 });
 
 controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoListFactory) {
+    $scope.viewLoading = true;
+
     // List
-    $scope.todoLists = TodoListFactory.getAll();
+    $scope.todoLists = TodoListFactory.getAll(function (data) {
+        $scope.viewLoading = false;
+    });
 
     // Delete
     $scope.removeFromTodoList = function (todoListId) {
