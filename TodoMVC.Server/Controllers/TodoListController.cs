@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using TodoMVC.Core;
 using TodoMVC.Core.CreateTodoList;
+using TodoMVC.Core.DeleteTodoList;
 using TodoMVC.Core.GetTodoList;
 using TodoMVC.Core.GetTodoLists;
 using TodoMVC.Server.Mappers;
@@ -52,6 +53,16 @@ namespace TodoMVC.Server.Controllers
             }
 
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ModelState);
+        }
+
+        [HttpDelete]
+        public HttpResponseMessage Delete(int id)
+        {
+            var deleteTodoListHandler = new DeleteTodoListHandler();
+            deleteTodoListHandler.Handle(id);
+
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            return response;
         }
     }
 }

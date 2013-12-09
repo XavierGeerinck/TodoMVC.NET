@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreateTodoList\CreateTodoListHandler.cs" />
+    <Compile Include="DeleteTodoList\DeleteTodoListHandler.cs" />
     <Compile Include="GetTodoItems\GetTodoItemsHandler.cs" />
     <Compile Include="GetTodoItems\TodoItemMapper.cs" />
     <Compile Include="GetTodoLists\TodoListsMapper.cs" />

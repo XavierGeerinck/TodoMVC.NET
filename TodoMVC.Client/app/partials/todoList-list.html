@@ -7,8 +7,11 @@
     </a>
 </div>
 
-<div class="panel panel-default" ng-repeat="todoList in todoLists">
-    <div class="panel-heading">{{ todoList.Name }}</div>
+<div class="panel panel-default repeated-item" ng-repeat="todoList in todoLists">
+    <div class="panel-heading">
+        {{ todoList.Name }}
+        <button class="btn btn-default" ng-click="removeFromTodoList(todoList.Id)">Delete</button>
+    </div>
     <div class="panel-body">
         <ul class="list-group" ng-repeat="todoItem in todoList.TodoItems">
             <li class="list-group-item">{{ todoItem.Title }}</li>

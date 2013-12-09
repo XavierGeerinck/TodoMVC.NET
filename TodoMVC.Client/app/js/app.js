@@ -4,6 +4,7 @@
 // Configure the app
 var app = angular.module('app', [
     'ngRoute',
+    'ngAnimate',
     'app.filters',
     'app.services',
     'app.directives',
