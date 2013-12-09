@@ -18,6 +18,7 @@ namespace TodoMVC.Server.Middleware
         {
             context.Response.Headers.Set("Access-Control-Allow-Origin", ConfigurationManager.AppSettings["ClientOrigin"]);
             context.Response.Headers.Set("Access-Control-Allow-Methods", ConfigurationManager.AppSettings["AllowedMethods"]);
+            context.Response.Headers.Set("Access-Control-Allow-Headers", ConfigurationManager.AppSettings["AllowedHeaders"]);
 
             await this.Next.Invoke(context);
         }
