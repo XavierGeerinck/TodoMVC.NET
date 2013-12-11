@@ -29,7 +29,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="todoItem in todoList.TodoItems | orderBy:'DueDate'">
-                        <td>{{ todoItem.State }}</td>
+                        <td>{{ states[todoItem.State] }}</td>
                         <td>{{ todoItem.Title }}</td>
                         <td>{{ todoItem.DueDate | date: 'medium'}}</td>
                         <td><a href="#/item/edit/{{ todoItem.Id }}" class="btn btn-default">Edit</a></td>

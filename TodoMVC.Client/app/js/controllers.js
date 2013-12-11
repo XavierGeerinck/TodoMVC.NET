@@ -9,13 +9,15 @@ controllers.controller('HeaderCtrl', function ($scope, $location) {
     };
 });
 
-controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoListFactory, TodoItemFactory) {
+controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoListFactory, TodoItemFactory, StateFactory) {
     $scope.viewLoading = true;
 
     // List
     $scope.todoLists = TodoListFactory.getAll(function (data) {
         $scope.viewLoading = false;
     });
+
+    $scope.states = StateFactory.getAll();
 
     // Delete list
     $scope.removeFromTodoList = function (todoListId) {
