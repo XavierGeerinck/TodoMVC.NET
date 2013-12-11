@@ -9,7 +9,7 @@ controllers.controller('HeaderCtrl', function ($scope, $location) {
     };
 });
 
-controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoListFactory) {
+controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoListFactory, TodoItemFactory) {
     $scope.viewLoading = true;
 
     // List
@@ -17,7 +17,7 @@ controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoLis
         $scope.viewLoading = false;
     });
 
-    // Delete
+    // Delete list
     $scope.removeFromTodoList = function (todoListId) {
         if (!confirm('Confirm delete')) {
             return;
@@ -29,6 +29,25 @@ controllers.controller('TodoList_ListCtrl', function ($scope, $location, TodoLis
             for (var i in $scope.todoLists) {
                 if ($scope.todoLists[i].Id == todoListId) {
                     $scope.todoLists.splice(i, 1);
+                }
+            }
+        });
+    };
+
+    // Remove todoItem
+    $scope.removeItemFromTodoList = function (todoItemId) {
+        if (!confirm('Confirm delete item?')) {
+            return;
+        }
+
+        // Confirmed remove
+        TodoItemFactory.remove({ id: todoItemId }, {}, function (data) {
+            // Update the view
+            for (var i in $scope.todoLists) {
+                for (var j in $scope.todoLists[i].TodoItems) {
+                    if ($scope.todoLists[i].TodoItems[j].Id == todoItemId) {
+                        $scope.todoLists[i].TodoItems.splice(j, 1);
+                    }
                 }
             }
         });
@@ -88,6 +107,18 @@ controllers.controller('TodoItem_CreateCtrl', function ($scope, $location, TodoL
     $scope.addTodoItem = function () {
         // Add + redirect to home
         TodoItemFactory.add({}, $scope.todoItem, function (data) {
+            $location.path('/');
+        });
+    };
+});
+
+controllers.controller('TodoItem_EditCtrl', function ($scope, $location, $routeParams, TodoItemFactory) {
+    // Todoitem that we are editing
+    $scope.todoItem = TodoItemFactory.getOne({ id: $routeParams.id });
+
+    // Edit form submit
+    $scope.editTodoItem = function () {
+        TodoItemFactory.edit({ id: $scope.todoItem.Id }, $scope.todoItem, function (data) {
             $location.path('/');
         });
     };

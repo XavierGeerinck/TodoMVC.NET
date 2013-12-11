@@ -23,6 +23,8 @@
                         <th>State</th>
                         <th>Title</th>
                         <th>DueDate</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,6 +32,8 @@
                         <td>{{ todoItem.State }}</td>
                         <td>{{ todoItem.Title }}</td>
                         <td>{{ todoItem.DueDate | date: 'medium'}}</td>
+                        <td><a href="#/item/edit/{{ todoItem.Id }}" class="btn btn-default">Edit</a></td>
+                        <td><button class="btn btn-default" ng-click="removeItemFromTodoList(todoItem.Id)">Delete</button></td>
                     </tr>
                 </tbody>
             </table>

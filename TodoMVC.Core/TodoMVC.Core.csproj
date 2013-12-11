@@ -55,10 +55,12 @@
   <ItemGroup>
     <Compile Include="StateHandlers\GetStatesHandler.cs" />
     <Compile Include="TodoItemHandlers\CreateTodoItemHandler.cs" />
+    <Compile Include="TodoItemHandlers\DeleteTodoItemHandler.cs" />
+    <Compile Include="TodoItemHandlers\GetTodoItemHandler.cs" />
     <Compile Include="TodoListHandlers\EditTodoListHandler.cs" />
     <Compile Include="TodoListHandlers\CreateTodoListHandler.cs" />
     <Compile Include="TodoListHandlers\DeleteTodoListHandler.cs" />
-    <Compile Include="TodoListHandlers\GetTodoItemsHandler.cs" />
+    <Compile Include="TodoItemHandlers\GetTodoItemsHandler.cs" />
     <Compile Include="Mappers\TodoItemMapper.cs" />
     <Compile Include="Mappers\TodoListMapper.cs" />
     <Compile Include="TodoListHandlers\GetTodoListHandler.cs" />

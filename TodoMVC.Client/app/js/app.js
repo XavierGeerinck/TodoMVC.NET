@@ -17,5 +17,6 @@ app.config(function ($routeProvider) {
     $routeProvider.when('/list/create', { controller: 'TodoList_CreateCtrl', templateUrl: 'partials/todoList-create.html' });
     $routeProvider.when('/list/edit/:id', { controller: 'TodoList_EditCtrl', templateUrl: 'partials/todoList-edit.html' });
     $routeProvider.when('/item/create', { controller: 'TodoItem_CreateCtrl', templateUrl: 'partials/todoItem-create.html' });
+    $routeProvider.when('/item/edit/:id', { controller: 'TodoItem_EditCtrl', templateUrl: 'partials/todoItem-edit.html' });
     $routeProvider.otherwise({ redirectTo: '/' });
 });
