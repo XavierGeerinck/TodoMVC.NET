@@ -33,7 +33,10 @@
     <div class="form-group">
         <label for="inputDueDate" class="col-sm-2 control-label">Due Date</label>
         <div class="col-sm-10">
-            <input type="date" class="form-control" id="inputDueDate" placeholder={{text}} ng-model="todoItem.DueDate" required>
+            <div class="input-group date form_datetime">
+                <input type="text" class="form-control" id="inputDueDate" ng-model="todoItem.DueDate" required>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+            </div>
         </div>
     </div>
 
@@ -55,3 +58,11 @@
         </div>
     </div>
 </form>
+
+<!-- Custom JS for this page -->
+<script type="text/javascript">
+    $(".form_datetime").datetimepicker({
+        format: "dd MM yyyy - hh:ii",
+        pickerPosition: 'bottom-left'
+    });
+</script>  

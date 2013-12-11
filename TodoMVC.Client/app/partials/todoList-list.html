@@ -28,7 +28,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="todoItem in todoList.TodoItems">
+                    <tr ng-repeat="todoItem in todoList.TodoItems | orderBy:'DueDate'">
                         <td>{{ todoItem.State }}</td>
                         <td>{{ todoItem.Title }}</td>
                         <td>{{ todoItem.DueDate | date: 'medium'}}</td>
