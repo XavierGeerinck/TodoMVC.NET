@@ -75,6 +75,9 @@
     background-color:#FFBABA;
 }
 
+/* turns input border green when valid by angular  */
+/*
 input.ng-valid {
     border: 1px solid green;
 }
+*/

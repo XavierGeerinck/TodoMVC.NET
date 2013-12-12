@@ -1,7 +1,7 @@
 ﻿<br />
 
 <div class="page-header">
-    <h1>Create TodoList</h1>
+    <h1>{{title}}</h1>
 </div>
 
 <form class="form-horizontal" role="form" ng-submit="editTodoItem(todoItem)">
@@ -45,8 +45,8 @@
         <div class="col-sm-10">
             <img ng-show="loadingTodoLists" src="./images/ajax-loader.gif" class="ajax-loader repeated-item" />
 
-            <select ng-hide="loadingTodoLists" class="form-control repeated-item" id="inputTodoListId" ng-model="todoItem.TodoListId">
-                <option ng-repeat="todoList in todoLists" value="{{ todoList.Id }}">{{ todoList.Name }}</option>
+            <select ng-hide="loadingTodoLists" class="form-control repeated-item" id="inputTodoListId" ng-model="todoList" ng-options="todoList.Name for todoList in todoLists">
+                <!--option ng-repeat="todoList in todoLists" value="{{ todoList.Id }}">{{ todoList.Name }}</option-->
             </select>
         </div>
     </div>
@@ -54,7 +54,7 @@
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <a class="btn btn-default" href="#/">Cancel</a>
-            <button class="btn btn-default" type="submit">Create</button>
+            <button class="btn btn-default" type="submit">Edit</button>
         </div>
     </div>
 </form>

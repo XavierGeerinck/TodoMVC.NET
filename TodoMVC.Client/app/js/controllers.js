@@ -114,10 +114,29 @@ controllers.controller('TodoItem_CreateCtrl', function ($scope, $location, TodoL
     };
 });
 
-controllers.controller('TodoItem_EditCtrl', function ($scope, $location, $routeParams, TodoItemFactory) {
+controllers.controller('TodoItem_EditCtrl', function ($scope, $location, $routeParams, TodoItemFactory, StateFactory, TodoListFactory) {
+    $scope.loadingStates = true;
+    $scope.loadingTodoLists = true;
+        
     // Todoitem that we are editing
-    $scope.todoItem = TodoItemFactory.getOne({ id: $routeParams.id });
-
+    var todoItem = TodoItemFactory.getOne({ id: $routeParams.id }, function( item ) {
+        //set title
+        $scope.title = 'edit ' + todoItem.Title;   
+    });
+    $scope.todoItem = todoItem;
+    
+     // Get todolists
+    $scope.todoLists = TodoListFactory.getAll(function (data) {
+        $scope.loadingTodoLists = false;
+           //set id for the select 
+        $scope.todoList = $scope.todoLists[todoItem.TodoListId-1];
+    });
+    
+     // Get States  
+    $scope.states = StateFactory.getAll(function (data) {
+        $scope.loadingStates = false;
+    });
+    
     // Edit form submit
     $scope.editTodoItem = function () {
         TodoItemFactory.edit({ id: $scope.todoItem.Id }, $scope.todoItem, function (data) {

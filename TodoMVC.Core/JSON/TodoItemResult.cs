@@ -13,5 +13,7 @@ namespace TodoMVC.Core.JSON
         public String Description { get; set; }
         public State State { get; set; }
         public DateTime DueDate { get; set; }
+        public int TodoListId { get; set; }
+    
     }
 }
