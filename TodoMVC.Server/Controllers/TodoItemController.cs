@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using TodoMVC.Core;
 using TodoMVC.Core.JSON;
 using TodoMVC.Core.Mappers;
 using TodoMVC.Core.TodoItemHandlers;
@@ -84,6 +85,29 @@ namespace TodoMVC.Server.Controllers
 
             var response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
+        }
+
+        [HttpPut]
+        public HttpResponseMessage Put(int id, EditTodoItemModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Bind the model to a TodoList object
+                var mapper = new EditTodoItemMapper();
+                mapper.Configure();
+
+                // Map the model to the todolist result
+                var todoItem = mapper.Map(model);
+
+                // Create the todoList
+                var editTodoItemHandler = new EditTodoItemHandler();
+                editTodoItemHandler.Handle(id, todoItem);
+
+                var response = Request.CreateResponse<TodoItem>(HttpStatusCode.OK, todoItem);
+                return response;
+            }
+
+            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ModelState);
         }
     }
 }

@@ -4,7 +4,7 @@ using TodoMVC.Core;
 
 namespace TodoMVC.Server.Models
 {
-    public class CreateTodoItemModel
+    public class EditTodoItemModel
     {
         [Required(ErrorMessage = "Title is required.")]
         [MaxLength(50, ErrorMessage = "Title can be maximum 50 characters long.")]

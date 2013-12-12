@@ -46,7 +46,6 @@
             <img ng-show="loadingTodoLists" src="./images/ajax-loader.gif" class="ajax-loader repeated-item" />
 
             <select ng-hide="loadingTodoLists" class="form-control repeated-item" id="inputTodoListId" ng-model="todoList" ng-options="todoList.Name for todoList in todoLists">
-                <!--option ng-repeat="todoList in todoLists" value="{{ todoList.Id }}">{{ todoList.Name }}</option-->
             </select>
         </div>
     </div>

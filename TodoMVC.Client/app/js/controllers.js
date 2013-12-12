@@ -121,16 +121,23 @@ controllers.controller('TodoItem_EditCtrl', function ($scope, $location, $routeP
     // Todoitem that we are editing
     var todoItem = TodoItemFactory.getOne({ id: $routeParams.id }, function( item ) {
         //set title
-        $scope.title = 'edit ' + todoItem.Title;   
+        $scope.title = todoItem.Title; 
+        console.log('got item');
+        $scope.todoList = lists[todoItem.TodoListId-1];
+        console.log('list set right after item');
+        
     });
     $scope.todoItem = todoItem;
     
      // Get todolists
-    $scope.todoLists = TodoListFactory.getAll(function (data) {
+    var lists = TodoListFactory.getAll(function (data) {
         $scope.loadingTodoLists = false;
-           //set id for the select 
-        $scope.todoList = $scope.todoLists[todoItem.TodoListId-1];
+        //set id for the select 
+        $scope.todoList = lists[todoItem.TodoListId-1];
+        console.log('list set right');
     });
+    $scope.todoLists = lists;
+    console.log('list set in scope');
     
      // Get States  
     $scope.states = StateFactory.getAll(function (data) {
