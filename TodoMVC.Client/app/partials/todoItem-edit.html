@@ -4,7 +4,7 @@
     <h1>Create TodoList</h1>
 </div>
 
-<form class="form-horizontal" role="form" ng-submit="addTodoItem(todoItem)">
+<form class="form-horizontal" role="form" ng-submit="editTodoItem(todoItem)">
     <div class="form-group">
         <label for="inputTitle" class="col-sm-2 control-label">Title</label>
         <div class="col-sm-10">
@@ -62,7 +62,7 @@
 <!-- Custom JS for this page -->
 <script type="text/javascript">
     $(".form_datetime").datetimepicker({
-        format: "dd/MM/yyyy hh:ii",
+        format: "dd MM yyyy - hh:ii",
         pickerPosition: 'bottom-left'
     });
 </script>  

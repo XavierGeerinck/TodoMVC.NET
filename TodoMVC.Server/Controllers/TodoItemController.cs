@@ -32,6 +32,23 @@ namespace TodoMVC.Server.Controllers
             return response;
         }
 
+        [HttpGet]
+        public HttpResponseMessage Get(int id)
+        {
+            // Get the item
+            var getTodoItemHandler = new GetTodoItemHandler();
+            var result = getTodoItemHandler.Handle(id);
+
+            // Map the item
+            var mapper = new TodoItemMapper();
+            mapper.Configure();
+            var todoItemResult = mapper.Map(result);
+
+            // Create + return response
+            var response = Request.CreateResponse<TodoItemResult>(HttpStatusCode.OK, todoItemResult);
+            return response;
+        }
+
         [HttpPost]
         public HttpResponseMessage Post(CreateTodoItemModel model)
         {
@@ -57,6 +74,16 @@ namespace TodoMVC.Server.Controllers
             }
 
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ModelState);
+        }
+
+        [HttpDelete]
+        public HttpResponseMessage Delete(int id)
+        {
+            var handler = new DeleteTodoItemHandler();
+            handler.Handle(id);
+
+            var response = Request.CreateResponse(HttpStatusCode.OK);
+            return response;
         }
     }
 }
